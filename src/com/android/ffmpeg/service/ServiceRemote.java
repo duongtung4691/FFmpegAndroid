@@ -87,7 +87,8 @@ public class ServiceRemote extends Service {
 							"TAG_PARTIAL_WAKE_LOCK");
 					_cpuWakeLockPartial.acquire();
 
-					Log.i("TAG", "started service");
+					Log.i("TAG", "started service"
+							+ _oSavedState.getVideoProperties().get(0).getUrl());
 
 					if (_oFfmpegUtils.startImagetoVideo(
 							_oSavedState.getVideoProperties(),
