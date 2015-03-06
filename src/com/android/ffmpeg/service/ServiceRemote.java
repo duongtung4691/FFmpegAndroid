@@ -73,7 +73,7 @@ public class ServiceRemote extends Service {
 	}
 
 	@Override
-	public int onStartCommand(final Intent intent, int flags, int startId) {
+	public int onStartCommand(final Intent intent, int flags, final int startId) {
 		sendNotification("started movie making ");
 
 		new Thread(new Runnable() {
@@ -111,7 +111,7 @@ public class ServiceRemote extends Service {
 					serviceBroadcast.putExtra(PARAM_OUT_MSG, "Video making "
 							+ _sMessage);
 					sendBroadcast(serviceBroadcast);
-					stopSelf();
+					stopSelf(startId);
 					trimCache(getApplicationContext());
 					_cpuWakeLockPartial.release();
 					_cpuWakeLock.release();
